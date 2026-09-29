@@ -3,6 +3,7 @@ import { CATEGORY_LABEL, STATUS_LABEL } from "../i18n";
 import { E } from "./Editable";
 import { Icon } from "./Icons";
 import { StatusPill } from "./Projects";
+import { ProjectScene3D } from "./ProjectScene3D";
 import { goTo } from "../lib/dom";
 
 function InfoBlock({
@@ -53,6 +54,10 @@ export function ProjectDetail({ slug }: { slug: string }) {
         `${lang === "ar" ? "استفسار عن مشروع" : "Question about"}: ${project.name[lang]}`,
       )}`
     : "";
+
+  /* the project gets its own WebGL scene — a floating card of its own screenshot,
+     the technologies orbiting it, and a wireframe shaped by its category */
+  const sceneOn = content.settings.show3d !== false && content.settings.motion !== "off" && Boolean(project.image);
 
   return (
     <div className="section">
@@ -136,7 +141,9 @@ export function ProjectDetail({ slug }: { slug: string }) {
             </div>
 
             <div className="relative min-h-[220px] border-t border-[color:var(--color-line)] md:border-s md:border-t-0">
-              {project.image ? (
+              {sceneOn ? (
+                <ProjectScene3D key={project.slug} project={project} />
+              ) : project.image ? (
                 project.imageFit === "contain" ? (
                   <div
                     className="flex h-full min-h-[220px] items-center justify-center p-5"

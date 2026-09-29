@@ -37,6 +37,7 @@ export const UI: Dict = {
   stageApi: { ar: "APIs وقواعد بيانات", en: "APIs & databases" },
   stageRtl: { ar: "واجهات عربية RTL", en: "Arabic RTL UIs" },
   stageDb: { ar: "أنظمة تشغيل ومحاسبة", en: "Operations & accounting" },
+  projectSceneHint: { ar: "مشهد ثلاثي الأبعاد — حرّك المؤشر", en: "3D scene — move your pointer" },
   tourTitle: { ar: "جولة حيّة في المكوّنات", en: "A live tour of the parts" },
   tourSub: {
     ar: "شاشات تعمل أمامك الآن — وكل طبقة في الرسم ثلاثي الأبعاد هي جزء حقيقي من النظام.",

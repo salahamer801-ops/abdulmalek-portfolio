@@ -652,6 +652,94 @@ html[data-motion="off"] .screen-line {
   }
 }
 
+/* ---------- per-project 3D scene ---------- */
+.pscene {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  background: linear-gradient(
+    155deg,
+    color-mix(in srgb, var(--tone, #2aa3e0) 12%, #ffffff),
+    rgba(246, 250, 253, 0) 72%
+  );
+}
+.pscene-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.pscene-glow {
+  position: absolute;
+  inset-inline: 10%;
+  top: 14%;
+  height: 66%;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--tone, #2aa3e0) 30%, transparent),
+    transparent 72%
+  );
+  filter: blur(14px);
+  pointer-events: none;
+}
+.pscene-hint {
+  position: absolute;
+  inset-inline-start: 14px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--tone, #2aa3e0) 38%, var(--color-line));
+  background: rgba(255, 255, 255, 0.88);
+  padding: 4px 11px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-navy);
+  backdrop-filter: blur(6px);
+}
+.pscene-live {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--tone, var(--color-brand));
+  animation: pscenePulse 2.2s ease-in-out infinite;
+}
+@keyframes pscenePulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+.pscene-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 18px;
+}
+@media (max-width: 767px) {
+  .pscene {
+    height: 300px;
+  }
+}
+html[data-motion="off"] .pscene-live {
+  animation: none;
+}
+@media print {
+  .pscene {
+    display: none !important;
+  }
+}
+
 /* ---------- 3D exhibit layer ---------- */
 .scene3d {
   perspective: 1300px;
